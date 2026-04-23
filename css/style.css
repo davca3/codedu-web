@@ -80,7 +80,7 @@ a:hover {
     text-decoration: none;
 }
 
-.site-header .logo h1 {
+.site-header .logo {
     font-size: 1.35rem;
     font-weight: 800;
     letter-spacing: -0.04em;
@@ -93,6 +93,8 @@ a:hover {
     list-style: none;
     display: flex;
     gap: 0.2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .site-header nav ul li a {
@@ -116,6 +118,16 @@ a:hover {
     background: var(--accent);
     text-decoration: none;
     box-shadow: 0 2px 10px var(--accent-glow-strong);
+}
+
+/* ── Page h1 ── */
+.main-content > h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.04em;
+    line-height: 1.2;
+    margin-bottom: 2rem;
 }
 
 /* ── Main ── */
@@ -779,6 +791,114 @@ details .answer {
     display: block;
 }
 
+/* ── Hamburger menu ── */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: none;
+}
+
+.nav-toggle:hover {
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.3s;
+    border-radius: 2px;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+/* ── Bootstrap Carousel custom ── */
+#heroCarousel {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+#heroCarousel .carousel-caption {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 1.5rem 1.5rem;
+}
+
+#heroCarousel .carousel-caption h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    margin: 0;
+}
+
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next {
+    width: 3rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#heroCarousel:hover .carousel-control-prev,
+#heroCarousel:hover .carousel-control-next {
+    opacity: 0.8;
+}
+
+/* ── Bootstrap Modal Lightbox ── */
+#galleryModal .modal-content {
+    border-radius: var(--radius);
+}
+
+#galleryModal .modal-body img {
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+#galleryModal .modal-footer .btn {
+    padding: 0.35rem 1rem;
+    font-size: 0.85rem;
+}
+
+/* ── Bootstrap Alert custom ── */
+.alert {
+    border-radius: var(--radius) !important;
+    font-size: 0.92rem;
+}
+
+/* ── Scroll animations ── */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
     .site-header {
@@ -788,9 +908,22 @@ details .answer {
         gap: 0.5rem;
     }
 
+    .nav-toggle {
+        display: flex;
+    }
+
+    .site-header nav {
+        display: none;
+        width: 100%;
+    }
+
+    .site-header nav.nav-open {
+        display: block;
+    }
+
     .site-header nav ul {
-        justify-content: center;
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 0.2rem;
     }
 
     .site-footer {
