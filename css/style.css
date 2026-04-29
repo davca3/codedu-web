@@ -50,6 +50,11 @@ a:hover {
     color: var(--accent-2);
 }
 
+.main-content p a,
+.alert a {
+    text-decoration: underline;
+}
+
 /* ── Page wrapper ── */
 .page-wrapper {
     min-height: 100vh;
