@@ -32,7 +32,7 @@
             var $cap = $fig.find('figcaption');
             if ($img.length) {
                 images.push({
-                    src: $img.attr('src'),
+                    src: $img.attr('data-large') || $img.attr('src'),
                     alt: $img.attr('alt') || '',
                     caption: $cap.length ? $cap.text() : ''
                 });
